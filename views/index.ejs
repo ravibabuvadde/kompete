@@ -1,0 +1,174 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="style.css">
+        <script>
+            let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+        </script>
+    </head>
+    <body >
+        <% 
+
+            let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+            let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            let icons = {
+                "codechef":"https://img.icons8.com/color/30/null/codechef.png",
+                "codeforces":"https://img.icons8.com/external-tal-revivo-filled-tal-revivo/24/null/external-codeforces-programming-competitions-and-contests-programming-community-logo-filled-tal-revivo.png",
+                "kickstart":"https://img.icons8.com/plasticine/30/null/google-logo.png",
+                "hackerrank":"https://img.icons8.com/external-tal-revivo-filled-tal-revivo/48/null/external-hackerrank-is-a-technology-company-that-focuses-on-competitive-programming-logo-filled-tal-revivo.png",
+                "hackerearth":"https://img.icons8.com/fluency/48/null/hackerearth.png",
+                "leetcode":"https://img.icons8.com/external-tal-revivo-filled-tal-revivo/24/null/external-level-up-your-coding-skills-and-quickly-land-a-job-logo-filled-tal-revivo.png",
+                "topcoder":"https://img.icons8.com/fluency/48/null/topcoder.png",
+                "spoj":"https://img.icons8.com/fluency/48/null/spoj.png",
+            }
+            let date,day,month,year,hour,minute,second,time;
+
+            function timeSince(date,end_time) {
+                var difference = new Date(date).getTime() - new Date().getTime();
+
+                var daysDifference = Math.floor(difference/1000/60/60/24);
+                difference -= daysDifference*1000*60*60*24
+
+                var hoursDifference = Math.floor(difference/1000/60/60);
+                difference -= hoursDifference*1000*60*60
+
+                var minutesDifference = Math.floor(difference/1000/60);
+                difference -= minutesDifference*1000*60
+
+                var secondsDifference = Math.floor(difference/1000);
+
+                if(daysDifference < 0) {
+                    var difference = new Date(end_time).getTime() - new Date().getTime();
+
+                    var daysDifference = Math.floor(difference/1000/60/60/24);
+                    difference -= daysDifference*1000*60*60*24
+
+                    var hoursDifference = Math.floor(difference/1000/60/60);
+                    difference -= hoursDifference*1000*60*60
+
+                    var minutesDifference = Math.floor(difference/1000/60);
+                    difference -= minutesDifference*1000*60
+
+                    var secondsDifference = Math.floor(difference/1000);
+
+                    if(daysDifference > 0) return "Ends in "+daysDifference + "d";
+                    else return "Ended";
+                    if(hoursDifference > 0) return "Ends in "+hoursDifference + "h";
+                    if(minutesDifference > 0) return "Ends in "+minutesDifference + "m";
+                    if(secondsDifference > 0) return "Ends in "+secondsDifference + "s";
+                }
+                if(daysDifference > 0) return "Starts in "+daysDifference + "d";
+                if(hoursDifference > 0) return "Starts in "+hoursDifference + "h";
+                if(minutesDifference > 0) return "Starts in "+minutesDifference + "m";
+                if(secondsDifference > 0) return "Starts in "+secondsDifference + "s";
+            }
+
+        %>
+        <div class="col-12 px-3">
+            <div class="container mt-5 mb-3">
+                <div class="row"> 
+                    <% 
+                        
+                
+
+                        for(let i = 0; i < contests.length; i++) {
+                        let contest = contests[i];
+                        if(contest.site == "HackerRank" || contest.site == "HackerEarth" ){
+                            continue;
+                        }
+                        %>
+                        <div class="col-md-4 col-sm-6 col-xl-3 mb-3">
+                        <div class="card p-4 mb-2 contest-card d-flex justify-content-between">
+                            <div class="d-flex justify-content-between">
+                                <div class="d-flex flex-row align-items-center">
+                                    <div class="">
+                                        <img class="mx-1" src="<%= (icons[contest.site.toLowerCase().trim().replace(/\s+/g, '')] == null )?"https://img.icons8.com/external-filled-outline-lima-studio/30/null/external-contest-winter-sport-filled-outline-lima-studio.png":icons[contest.site.toLowerCase().trim().replace(/\s+/g, '')]; %>"/> </div>
+                                    <div class="ms-2 c-details">
+                                        <h6 class="mb-0 text1 text-capitalize"> <%= contest.site %> </h6>
+                                    </div>
+                                </div>
+                                <div> <span class="badge <% if(new Date() < new Date(contest.end_time)){ %>badge-dark<% }else{ %> badge-secondary<% } %>"><%= timeSince(contest.start_time, contest.end_time)+''; %> </span> </div>
+                            </div>
+                            <div class="mt-4">
+                                <div class="d-flex ms-2 justify-content-between">
+                                    <h3 class="heading"> <a href="<%= contest.url %>"><%= contest.name %></a> </h3>
+
+                                    <div class="register-btn btn">
+                                        <i class="bx bx-calendar"></i>
+                                    </div>
+
+                                </div>
+                                
+                                <div class="mt-4">
+                                    <div class="d-flex flex-row justify-content-between">
+                                        <div class="d-flex flex-row align-items-center">
+                                            <div class="ms-2 c-details">
+                                                <h6 class="mb-0 text1">Start Time</h6> <span class="text1" id="time"> <% 
+                                                
+                                                    date = new Date(contest.start_time);
+                                                    day = days[date.getDay()];
+                                                    month = months[date.getMonth()];
+                                                    year = date.getFullYear();
+                                                    hour = date.getHours();
+                                                    minute = (date.getMinutes() < 10 ? '0' : '') + date.getMinutes();
+                                                    second = date.getSeconds();
+
+                                                    time = `${day}, ${month} ${date.getDate()}, ${year} ${hour}:${minute}`;
+
+                                                    %> <%= time %> </span>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex flex-row align-items-center">
+                                            
+                                            <div class="ms-2 c-details">
+                                                <h6 class="mb-0 text1">End Time</h6> <span class="text1" id="time"> <% 
+
+                                                    date = new Date(contest.end_time);
+                                                    day = days[date.getDay()];
+                                                    month = months[date.getMonth()];
+                                                    year = date.getFullYear();
+                                                    hour = date.getHours();
+                                                    minute = (date.getMinutes() < 10 ? '0' : '') + date.getMinutes();
+                                                    second = date.getSeconds();
+
+                                                    time = `${day}, ${month} ${date.getDate()}, ${year} ${hour}:${minute}`;
+
+                                                    %> <%= time %> </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <% }
+
+                    %>
+
+
+                    
+                        
+                    
+
+
+                    
+                    
+                    
+                        
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+        </div>
+        
+    </body>
+</html>
