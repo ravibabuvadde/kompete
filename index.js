@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const axios = require('axios')
+const PORT = process.env.PORT || 3000;
 
 app.set('view-engine','ejs')
 
@@ -15,4 +16,4 @@ app.get('/',async(req,res)=>{
     
 })
 
-app.listen(80)
+app.listen(PORT);
