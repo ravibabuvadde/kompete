@@ -127,7 +127,7 @@
 
                                                     time = `${day}, ${month} ${date.getDate()}, ${year} ${hour}:${minute}`;
 
-                                                    %> <%= time %> UTC </span>
+                                                    %> <%= time.toLocaleString("en-IN", {timeZone: 'Asia/Kolkata'}) %> IST </span>
                                             </div>
                                         </div>
                                         <div class="d-flex flex-row align-items-center">
@@ -145,7 +145,7 @@
 
                                                     time = `${day}, ${month} ${date.getDate()}, ${year} ${hour}:${minute}`;
 
-                                                    %> <%= time %> UTC </span>
+                                                   %> <%= time.toLocaleString("en-IN", {timeZone: 'Asia/Kolkata'}) %> IST </span>
                                             </div>
                                         </div>
                                     </div>
