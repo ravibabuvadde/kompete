@@ -117,7 +117,7 @@
                                             <div class="ms-2 c-details">
                                                 <h6 class="mb-0 text1">Start Time</h6> <span class="text1" id="time"> <% 
                                                 
-                                                    date = new Date(new Date(contest.start_time).toLocaleString("en-US", {timeZone: "IST"}));
+                                                    date = new Date(new Date(contest.start_time).toLocaleString("en-US", {timeZone: "Asia/Kolkata"}));
                                                     day = days[date.getDay()];
                                                     month = months[date.getMonth()];
                                                     year = date.getFullYear();
@@ -135,7 +135,7 @@
                                             <div class="ms-2 c-details">
                                                 <h6 class="mb-0 text1">End Time</h6> <span class="text1" id="time"> <% 
 
-                                                    date = new Date(new Date(contest.end_time).toLocaleString("en-US", {timeZone: "IST"}));
+                                                    date = new Date(new Date(contest.end_time).toLocaleString("en-US", {timeZone: "Asia/Kolkata"}));
                                                     day = days[date.getDay()];
                                                     month = months[date.getMonth()];
                                                     year = date.getFullYear();
