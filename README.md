@@ -10,7 +10,6 @@ Competitive Programming Contests Schedule, Here you can find all the upcoming co
 4.  [Kick Start](https://codingcompetitions.withgoogle.com/kickstart)
 5.  [TopCoder](https://topcoder.com)
 6.  [AtCoder](https://atcoder.jp)
-7.  [Toph](https://toph.co)
 
 ## Run it Locally
 
